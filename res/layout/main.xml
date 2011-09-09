@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout style="@style/rootLayout" xmlns:android="http://schemas.android.com/apk/res/android">
+	<LinearLayout style="@style/mainLayout">
+		<LinearLayout style="@style/titleLayout" android:gravity="center">
+			<TextView style="@style/title" android:id="@+id/title" android:text="twee" />
+			<TextView style="@style/titlePlus" android:text="+" />
+		</LinearLayout>
+		<TextView android:id="@+id/text" style="@style/text" />
+		<com.github.poke.tweeplusreader.WrapLayout style="@style/buttonLayout" android:id="@+id/buttons" />
+	</LinearLayout>
+</RelativeLayout>
