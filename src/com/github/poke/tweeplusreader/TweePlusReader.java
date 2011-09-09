@@ -48,7 +48,7 @@ public class TweePlusReader extends Activity
 		
 		// parse intent URI
 		if ( getIntent().getDataString() != null )
-			decodeAndShow( getIntent().getData().getFragment() );
+			decodeAndShow( getIntent().getData().getEncodedFragment() );
 	}
 	
 	/**
