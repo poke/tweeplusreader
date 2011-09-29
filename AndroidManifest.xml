@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-	package="com.github.poke.tweeplusreader" android:versionCode="2"
-	android:versionName="1.0" android:installLocation="auto">
+	package="com.github.poke.tweeplusreader" android:versionCode="3"
+	android:versionName="1.1" android:installLocation="auto">
 	<uses-sdk android:targetSdkVersion="10" android:minSdkVersion="5" />
-	
+
 	<application android:label="@string/app_name" android:icon="@drawable/icon">
 		<activity android:name=".TweePlusReader" android:theme="@style/Theme.Transparent"
 			android:label="@string/app_name">
