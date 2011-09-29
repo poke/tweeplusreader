@@ -13,5 +13,12 @@
 				<data android:scheme="http" android:host="tweeplus.com" />
 			</intent-filter>
 		</activity>
+
+		<activity android:name=".TwiccaPluginActivity" android:label="@string/shorten">
+			<intent-filter>
+				<action android:name="jp.r246.twicca.ACTION_EDIT_TWEET" />
+				<category android:name="android.intent.category.DEFAULT" />
+			</intent-filter>
+		</activity>
 	</application>
 </manifest>
