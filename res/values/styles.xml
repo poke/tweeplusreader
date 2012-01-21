@@ -7,49 +7,47 @@
 		<item name="android:layout_width">fill_parent</item>
 		<item name="android:layout_height">fill_parent</item>
 	</style>
-
-	<!-- main layout -->
-	<style name="mainLayout">
-		<item name="android:background">@drawable/main_background</item>
-		<item name="android:orientation">vertical</item>
+	
+	<style name="base">
 		<item name="android:layout_width">fill_parent</item>
 		<item name="android:layout_height">wrap_content</item>
+	</style>
+	
+	<!-- main layout -->
+	<style name="mainLayout" parent="base">
+		<item name="android:background">@drawable/main_background</item>
+		<item name="android:orientation">vertical</item>
 		<item name="android:layout_marginTop">50dp</item>
 		<item name="android:layout_marginRight">20dp</item>
 		<item name="android:layout_marginBottom">50dp</item>
 		<item name="android:layout_marginLeft">20dp</item>
 	</style>
-
-	<!-- application title -->
-	<style name="titleLayout">
+	
+	<!-- title -->
+	<style name="titleLayout" parent="base">
+		<item name="android:gravity">center</item>
 		<item name="android:orientation">horizontal</item>
-		<item name="android:layout_width">fill_parent</item>
-		<item name="android:layout_height">wrap_content</item>
 	</style>
-
+	
 	<style name="title">
+		<item name="android:text">twee</item>
 		<item name="android:textSize">30sp</item>
 		<item name="android:textStyle">bold</item>
 		<item name="android:layout_width">wrap_content</item>
 		<item name="android:layout_height">wrap_content</item>
 	</style>
-
+	
 	<style name="titlePlus" parent="title">
+	    <item name="android:text">+</item>
+	    <item name="android:textColor">#FFFFFFFF</item>
 		<item name="android:textSize">40sp</item>
-		<item name="android:textColor">#FFFFFFFF</item>
 	</style>
-
-
-	<!-- button container layout -->
-	<style name="buttonLayout">
-		<item name="android:layout_width">fill_parent</item>
-		<item name="android:layout_height">wrap_content</item>
+	
+	<!-- content -->
+	
+	<style name="text" parent="base"></style>
+	
+	<style name="buttonLayout" parent="base">
 		<item name="android:paddingTop">15sp</item>
-	</style>
-
-	<!-- text view -->
-	<style name="text">
-		<item name="android:layout_width">fill_parent</item>
-		<item name="android:layout_height">wrap_content</item>
 	</style>
 </resources>
