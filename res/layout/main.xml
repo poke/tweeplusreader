@@ -5,7 +5,11 @@
 			<TextView style="@style/title" android:id="@+id/title" />
 			<TextView style="@style/titlePlus" />
 		</LinearLayout>
-		<TextView style="@style/text" android:id="@+id/text" />
-		<com.github.poke.tweeplusreader.WrapLayout style="@style/buttonLayout" android:id="@+id/buttons" />
+		<ScrollView style="@style/base">
+		    <LinearLayout style="@style/textLayout">
+				<TextView style="@style/text" android:id="@+id/text" />
+				<com.github.poke.tweeplusreader.WrapLayout style="@style/buttonLayout" android:id="@+id/buttons" />
+			</LinearLayout>
+		</ScrollView>
 	</LinearLayout>
 </RelativeLayout>

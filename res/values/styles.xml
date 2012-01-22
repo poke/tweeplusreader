@@ -44,6 +44,9 @@
 	</style>
 	
 	<!-- content -->
+	<style name="textLayout" parent="base">
+		<item name="android:orientation">vertical</item>
+	</style>
 	
 	<style name="text" parent="base"></style>
 	
