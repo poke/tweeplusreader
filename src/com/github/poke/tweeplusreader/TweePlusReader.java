@@ -1,5 +1,6 @@
 package com.github.poke.tweeplusreader;
 
+import java.util.HashSet;
 import java.util.regex.Matcher;
 
 import android.app.Activity;
@@ -63,12 +64,19 @@ public class TweePlusReader extends Activity
 		Spannable span = (Spannable) textView.getText();
 		
 		// find mentions, hashtags or links
+		HashSet<String> buttonCache = new HashSet<String>();
 		clearButtons();
+		
 		Matcher m = TweePlus.createLinkMatcher( text );
 		while ( m.find() )
 		{
 			span.setSpan( new ForegroundColorSpan( currentColor ), m.start(), m.end(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE );
 			String link = m.group( 1 );
+			
+			// show button
+			if ( buttonCache.contains( link ) )
+				continue;
+			buttonCache.add( link );
 			
 			switch ( link.charAt( 0 ) )
 			{
