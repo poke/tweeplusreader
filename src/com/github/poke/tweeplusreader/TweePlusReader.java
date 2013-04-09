@@ -25,98 +25,98 @@ import android.widget.TextView.BufferType;
 public class TweePlusReader extends Activity
 {
 	private static final int[] COLORS = new int[] { 0xFFFF5500, 0xFFFF1493, 0xFF00AAFF, 0xFF99DD11 };
-	
+
 	private TextView titleView;
 	private TextView textView;
 	private ViewGroup buttons;
 	private int currentColor;
 	private String text;
-	
+
 	@Override
-	public void onCreate ( Bundle savedInstanceState )
+	public void onCreate (Bundle savedInstanceState)
 	{
-		super.onCreate( savedInstanceState );
-		setContentView( R.layout.main );
-		
-		titleView = (TextView) findViewById( R.id.title );
-		textView = (TextView) findViewById( R.id.text );
-		buttons = (ViewGroup) findViewById( R.id.buttons );
-		
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.main);
+
+		titleView = (TextView) findViewById(R.id.title);
+		textView = (TextView) findViewById(R.id.text);
+		buttons = (ViewGroup) findViewById(R.id.buttons);
+
 		// randomly select color
 		// TODO Animate color.
-		currentColor = COLORS[(int) ( Math.random() * 4 )];
-		titleView.setTextColor( currentColor );
-		
+		currentColor = COLORS[(int) (Math.random() * 4)];
+		titleView.setTextColor(currentColor);
+
 		// parse intent URI
-		if ( getIntent().getDataString() != null )
-			decodeAndShow( getIntent().getData().getEncodedFragment() );
+		if (getIntent().getDataString() != null)
+			decodeAndShow(getIntent().getData().getEncodedFragment());
 	}
-	
+
 	/**
 	 * Decode the given text and show it on screen.
-	 * 
+	 *
 	 * @param encodedText the text to decode.
 	 */
-	private void decodeAndShow ( String encodedText )
+	private void decodeAndShow (String encodedText)
 	{
-		text = TweePlus.decode( encodedText );
-		textView.setText( text, BufferType.SPANNABLE );
+		text = TweePlus.decode(encodedText);
+		textView.setText(text, BufferType.SPANNABLE);
 		Spannable span = (Spannable) textView.getText();
-		
+
 		// find mentions, hashtags or links
 		HashSet<String> buttonCache = new HashSet<String>();
 		clearButtons();
-		
-		Matcher m = TweePlus.createLinkMatcher( text );
-		while ( m.find() )
+
+		Matcher m = TweePlus.createLinkMatcher(text);
+		while (m.find())
 		{
-			span.setSpan( new ForegroundColorSpan( currentColor ), m.start(), m.end(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE );
-			String link = m.group( 1 );
-			
+			span.setSpan(new ForegroundColorSpan(currentColor), m.start(), m.end(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+			String link = m.group(1);
+
 			// show button
-			if ( buttonCache.contains( link ) )
+			if (buttonCache.contains(link))
 				continue;
-			buttonCache.add( link );
-			
-			switch ( link.charAt( 0 ) )
+			buttonCache.add(link);
+
+			switch (link.charAt(0))
 			{
 				case TweePlus.CHAR_MENTION:
-					addButton( link, "http://twitter.com/" + link.substring( 1 ) );
+					addButton(link, "http://twitter.com/" + link.substring(1));
 					break;
-				
+
 				case TweePlus.CHAR_HASHTAG:
-					addButton( link, "http://twitter.com/search/%23" + link.substring( 1 ) );
+					addButton(link, "http://twitter.com/search/%23" + link.substring(1));
 					break;
-				
+
 				default:
-					addButton( link, link );
+					addButton(link, link);
 					break;
 			}
 		}
 	}
-	
+
 	/**
 	 * Adds a button to the button bar.
-	 * 
+	 *
 	 * @param title the button title.
 	 * @param link the link that will be opened when the button is pressed.
 	 */
-	private void addButton ( final String title, final String link )
+	private void addButton (final String title, final String link)
 	{
-		Button btn = new Button( this, null, android.R.attr.buttonStyleSmall );
-		btn.setLayoutParams( new LayoutParams( LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT ) );
-		btn.setText( title );
-		btn.setOnClickListener( new OnClickListener()
+		Button btn = new Button(this, null, android.R.attr.buttonStyleSmall);
+		btn.setLayoutParams(new LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT));
+		btn.setText(title);
+		btn.setOnClickListener(new OnClickListener()
 		{
-			public void onClick ( View v )
+			public void onClick (View v)
 			{
-				startActivity( new Intent( Intent.ACTION_VIEW, Uri.parse( link ) ) );
+				startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(link)));
 			}
-		} );
-		
-		buttons.addView( btn );
+		});
+
+		buttons.addView(btn);
 	}
-	
+
 	/**
 	 * Remove all buttons from the button bar.
 	 */
