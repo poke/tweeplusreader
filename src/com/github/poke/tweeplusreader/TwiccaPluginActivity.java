@@ -9,7 +9,7 @@ import android.os.Bundle;
 
 public class TwiccaPluginActivity extends Activity
 {
-	private static final int AVAILABLE_TEXT_LENGTH = 119;
+	private static final int AVAILABLE_TEXT_LENGTH = 117;
 	private static final Pattern reRelevantSuffix = Pattern.compile( "(?s)^\\s*\\w+(\\s*@\\w+)*" );
 	
 	@Override
