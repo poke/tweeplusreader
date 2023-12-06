@@ -1,0 +1,57 @@
+html {
+    background: #202020;
+    color: #AAA;
+    font: 12pt sans-serif;
+}
+body {
+    max-width: 700px;
+    margin: auto;
+}
+
+h1 {
+    color: #FF1493;
+    margin: 1em auto 0.5em;
+    text-align: center;
+}
+h2 {
+    color: #FF1493;
+    margin: 1em 0em 0.2em;
+    font-size: 1.1em;
+}
+h1 span {
+    color: #FFFFFF;
+}
+h1 span+span {
+    color: #99DD11;
+}
+
+p {
+    margin: 0em 0em 1em;
+    line-height: 1.3em;
+}
+
+a {
+    color: #CCC;
+    text-decoration: none;
+}
+a:hover {
+    color: #99DD11;
+    text-decoration: underline;
+}
+
+footer {
+    margin-top: 2em;
+    font-size: 0.8em;
+    text-align: center;
+}
+
+#fork {
+    position: absolute;
+    top: 0;
+    right: 0;
+    border: 0;
+}
+#qr {
+    float: right;
+    margin: 0px 0px 0.5em 0.5em;
+}
